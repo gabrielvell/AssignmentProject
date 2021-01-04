@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Wick : MonoBehaviour {
     [SerializeField]
- //creating a container(variable) to contain our player speed
+    //creating variable to contain player speed
     private float _speed = 3.5f;
-    // Start is called before the first frame update
+    private float _force = 1000f;
     void /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -16,7 +16,6 @@ public class Wick : MonoBehaviour {
         //Take the current player and we will be changing it to x=0,y=0,z=0
         transform.position = new Vector3(0,0,0); 
     }
-    // Update is called once per frame
         void Update() 
         {
         //move the player to the right
@@ -34,6 +33,20 @@ public class Wick : MonoBehaviour {
         {
             //move the player to the left
             transform.Translate(-_speed * Time.deltaTime,0,0);
+        //if the up arrow is pressed then component should jump
+        bool pressedUpArrow = Input.GetButtonDown("Jump");
+        //if uprrow is pressed pressedUpArrow = true
+        if(pressedUpArrow)
+        {
+            //storing rigidbody2d so component can jump when obsticles are shown
+            Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
+            //set rigidbody velocity to zero
+            //Vector3(0,0,0) Vector3(x,y,z)
+            rigidbody.velocity = Vector3.zero;
+            //add upwards force to rigidbody
+            //Vector3(0,1,0) * force(1000f)
+            rigidbody.AddForce(Vector3.up * _force);
         }
     }
+}
 }
