@@ -1,8 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wick : MonoBehaviour {
+public class Wick : MonoBehaviour 
+{
     [SerializeField]
     //creating variable to contain player speed
     private float _speed = 3.5f;
@@ -15,9 +16,9 @@ public class Wick : MonoBehaviour {
         {
         //Take the current player and we will be changing it to x=0,y=0,z=0
         transform.position = new Vector3(0,0,0); 
-    }
-        void Update() 
-        {
+        }
+    void Update() 
+    {
         //move the player to the right
         //realtime
         //x * realtime(Time.deltaTime) = 1m/s
@@ -33,20 +34,22 @@ public class Wick : MonoBehaviour {
         {
             //move the player to the left
             transform.Translate(-_speed * Time.deltaTime,0,0);
-        //if the up arrow is pressed then component should jump
-        bool pressedUpArrow = Input.GetButtonDown("Jump");
-        //if uprrow is pressed pressedUpArrow = true
-        if(pressedUpArrow)
+        }
+        if(Input.GetKeyDown(KeyCode.UpArrow))
         {
+            transform.position += Vector3.up;
+        }
+        //if the up arrow is pressed then component should jump
+        //bool pressedUpArrow = Input.GetButtonDown("Jump");
+        //if uprrow is pressed pressedUpArrow = true
+        //if(pressedUpArrow)
+        //{
             //storing rigidbody2d so component can jump when obsticles are shown
-            Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
-            //set rigidbody velocity to zero
-            //Vector3(0,0,0) Vector3(x,y,z)
-            rigidbody.velocity = Vector3.zero;
+        //    Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
             //add upwards force to rigidbody
             //Vector3(0,1,0) * force(1000f)
-            rigidbody.AddForce(Vector3.up * _force);
-        }
+        //    rigidbody.AddForce(Vector3.up * _force);
+        //}
     }
 }
-}
+
