@@ -8,6 +8,7 @@ public class Wick : MonoBehaviour
     //creating variable to contain player speed
     private float _speed = 3.5f;
     private float _force = 1000f;
+
     void /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -38,6 +39,10 @@ public class Wick : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
             transform.position += Vector3.up;
+        }
+        else if(Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            transform.position += Vector3.down;
         }
         //if the up arrow is pressed then component should jump
         //bool pressedUpArrow = Input.GetButtonDown("Jump");
