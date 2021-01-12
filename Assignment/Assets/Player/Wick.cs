@@ -9,17 +9,40 @@ public class Wick : MonoBehaviour
     private float _speed = 3.5f;
     private float _force = 1000f;
 
+    private bool gameWon = false;
+    private bool levelStarted = false;
+
     void /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
     /// </summary>
         Start()
         {
-        //Take the current player and we will be changing it to x=0,y=0,z=0
-        transform.position = new Vector3(0,0,0); 
+        transform.position = new Vector3(0,0,0);         
         }
     void Update() 
     {
+        CheckPlayAgain();
+    void CheckPlayAgain()
+    {
+        if (gameWon == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                gameWon = false;
+            }
+        }
+    }
+    { 
+        // if game is not won yet, allow movement
+        if (!gameWon)
+        {
+            // if level hasn't started, don't check movement updates
+            // only time that allows any movement (intro sound and level start sound done playing)
+            if (levelStarted == true)
+            {
+                // Stores current position of GameObject
+                Vector2 pos = transform.localPosition; // Get current position of transform, everytime update position, need to know previous position 
         //move the player to the right
         //realtime
         //x * realtime(Time.deltaTime) = 1m/s
@@ -55,6 +78,9 @@ public class Wick : MonoBehaviour
             //Vector3(0,1,0) * force(1000f)
         //    rigidbody.AddForce(Vector3.up * _force);
         //}
+            }
+        }
+    }
     }
 }
 
