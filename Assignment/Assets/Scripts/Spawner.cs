@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour{
-
 	public float spawnDelay = .3f;
+	//spawn delay so obstacles do not clash together
 
-	public GameObject car;
+	public GameObject wick;
 
 	public Transform[] spawnPoints;
 
@@ -16,17 +16,18 @@ public class Spawner : MonoBehaviour{
 	{
 		if (nextTimeToSpawn <= Time.time)
 		{
-			SpawnCar();
+			SpawnWick();
 			nextTimeToSpawn = Time.time + spawnDelay;
 		}
 	}
 
-	void SpawnCar ()
+	void SpawnWick ()
 	{
+		//randomized spawn range + randomized speed
 		int randomIndex = Random.Range(0, spawnPoints.Length);
 		Transform spawnPoint = spawnPoints[randomIndex];
 
-		Instantiate(car, spawnPoint.position, spawnPoint.rotation);
+		Instantiate(wick, spawnPoint.position, spawnPoint.rotation);
 	}
 
 }
