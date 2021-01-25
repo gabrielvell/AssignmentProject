@@ -17,7 +17,7 @@ public class Wick : MonoBehaviour
     /// </summary>
         Start()
         {
-        transform.position = new Vector3(0,-3,0);
+        transform.position = new Vector3(0,0,0);
         }
     void Update() 
     // Update is called once per frame
@@ -63,4 +63,13 @@ public class Wick : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
+    void OnTriggerEnter2D (Collider2D col)
+	{
+		if (col.tag == "Car")
+		{
+			Debug.Log("WE LOST!");
+			Score.CurrentScore = 0;
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		}
+	}
 }
