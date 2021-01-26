@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour{
 	void SpawnWick ()
 	{
 		//randomized spawn range + randomized speed
-		int randomIndex = Random.Range(0, spawnPoints.Length);
+		int randomIndex = Random.Range(10, spawnPoints.Length);
 		Transform spawnPoint = spawnPoints[randomIndex];
 
 		Instantiate(wick, spawnPoint.position, spawnPoint.rotation);

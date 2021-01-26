@@ -51,7 +51,7 @@ public class Wick : MonoBehaviour
         //if the position of the player on the y axis is smaller than -4 reset the scene
         //if the position of the player on the y axis is larger than 6 reset the scene
         //if the position of the player on the y axis is < than -4f OR > than 6f
-        if(transform.position.y < -4f || transform.position.y > 6f)
+        if(transform.position.y < -4f)
         {
             //restarts scene from beginning
             SceneManager.LoadScene(0);
@@ -65,7 +65,7 @@ public class Wick : MonoBehaviour
     }
     void OnTriggerEnter2D (Collider2D col)
 	{
-		if (col.tag == "Car")
+		if (col.tag == "Frog")
 		{
 			Debug.Log("WE LOST!");
 			Score.CurrentScore = 0;
