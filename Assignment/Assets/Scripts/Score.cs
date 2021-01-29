@@ -1,7 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI;                        
 
 public class Score : MonoBehaviour
 {
@@ -29,21 +29,17 @@ public class Score : MonoBehaviour
 	private IEnumerator IncrementCoroutine ()
 	{
 		float time = 0;
+		//tells the text the score so it can go up
 		label.text = startingValue.ToString();
-
 		while ( time < incrementTime )
 		{
 			yield return null;
-
 			time += Time.deltaTime;
 			float factor = time / incrementTime;
-
 			label.text = ((int) Mathf.Lerp(startingValue, targetValue, factor)).ToString();
 		}
-
 		if ( enableWhenDone != null )
 			enableWhenDone.SetActive(true);
-
 		yield break;
 	}
 }
