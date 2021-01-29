@@ -48,14 +48,17 @@ public class Wick : MonoBehaviour
             transform.position += Vector3.down;
             Debug.Log("Down arrow key was pressed");
         }
-        //if the position of the player on the y axis is smaller than -4 reset the scene
-        //if the position of the player on the y axis is larger than 6 reset the scene
-        //if the position of the player on the y axis is < than -4f OR > than 6f
+        //if position on the y axis is smaller than -4 reset the scene
+        //if position on the y axis is larger than 6 reset the scene
+        //if position on the y axis is < than -4f OR > than 1f
         if(transform.position.y < -4f)
         {
             //restarts scene from beginning
             SceneManager.LoadScene(0);
         }
+        if(transform.position.y > 6f)
+            //restarts scene from beginning
+            SceneManager.LoadScene(0);
         //if the position of the player on the y axis is larger than 9 reset the scene
         //if the position of the player  on the y axis is < than -9f OR > than 9f        
         if(transform.position.x < -9f || transform.position.x > 9f)
@@ -63,13 +66,4 @@ public class Wick : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
-    void OnTriggerEnter2D (Collider2D col)
-	{
-		if (col.tag == "Frog")
-		{
-			Debug.Log("WE LOST!");
-			Score.CurrentScore = 0;
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-		}
-	}
 }

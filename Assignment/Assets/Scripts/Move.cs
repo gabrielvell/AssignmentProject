@@ -27,11 +27,11 @@ public class Move : MonoBehaviour
             if(_randomizeHeight)
             {
                 //specific spawn points so the obstacles can be in range with the game
-                float randomYPosition = Random.Range(1f,5f);
+                float randomYPosition = Random.Range(-3f,5f);
                 //comment to advize what is happening and gives out the specific spawn point
                 Debug.Log("The random position is: " + randomYPosition);
                 //the x position is randomized along with the y position
-                float randomXPosition = Random.Range(-8f, 8f);
+                float randomXPosition = Random.Range(4f, 8f);
                 Debug.Log("The random position is: " + randomXPosition);
                 //only z is not randomized since everything is surface level
                 transform.position = new Vector3(randomXPosition,randomYPosition,0);
